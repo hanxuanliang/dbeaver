@@ -42,6 +42,7 @@
         <module>org.jkiss.dbeaver.ext.db2.i</module>
         <module>org.jkiss.dbeaver.ext.derby</module>
         <module>org.jkiss.dbeaver.ext.dameng</module>
+        <module>org.jkiss.dbeaver.ext.databend</module>
         <module>org.jkiss.dbeaver.ext.duckdb</module>
         <module>org.jkiss.dbeaver.ext.es</module>
         <module>org.jkiss.dbeaver.ext.exasol</module>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+
+<plugin>
+
+    <extension point="org.jkiss.dbeaver.generic.meta">
+        <meta id="databend"
+              class="org.jkiss.dbeaver.ext.databend.model.DatabendMetaModel"
+              driverClass="com.databend.jdbc.DatabendDriver"
+              dialect="databend"/>
+    </extension>
+
+    <extension point="org.jkiss.dbeaver.dataSourceProvider">
+        <datasource
+                class="org.jkiss.dbeaver.ext.databend.ClickhouseDataSourceProvider"
+                description="Databend"
+                id="databend"
+                parent="generic"
+                label="Databend"
+                icon="platform:/plugin/org.jkiss.dbeaver.ext.generic/icons/clickhouse_icon.png"
+                dialect="clickhouse">
+
+            <drivers managable="true">
+                <driver
+                        id="databend"
+                        label="Databend"
+                        class="com.databend.jdbc.DatabendDriver"
+                        sampleURL="jdbc:databend://{username}:{password}@{host}:{port}[/{database}]"
+                        defaultPort="8000"
+                        icon="icons/databend_icon.png"
+                        iconBig="icons/databend_icon_big.png"
+                        description="Driver for Databend"
+                        supportedConfigurationTypes="MANUAL,URL"
+                        webURL="https://github.com/databendcloud/databend-jdbc"
+                        categories="sql"
+                        singleConnection="true">
+                    <property name="@dbeaver-default-resultset.maxrows.sql" value="true"/>
+                    <file type="jar" path="maven:/com.databend:databend-jdbc:RELEASE[0.2.2]"/>
+                    <file type="license" path="https://www.apache.org/licenses/LICENSE-2.0.txt"/>
+                    <property name="@dbeaver-default-dataformat.type.timestamp.pattern"
+                              value="yyyy-MM-dd HH:mm:ss[.fffffffff]"/>
+                    <parameter name="supports-references" value="false"/>
+                    <parameter name="supports-truncate" value="false"/>
+                    <parameter name="omit-catalog" value="true"/>
+                    <parameter name="alter-table-add-column" value="true"/>
+                    <parameter name="supports-multi-insert" value="true"/>
+                </driver>
+            </drivers>
+
+        </datasource>
+    </extension>
+
+    <extension point="org.jkiss.dbeaver.sqlDialect">
+        <dialect id="databend" parent="generic" class="org.jkiss.dbeaver.ext.clickhouse.model.DatabendSQLDialect"
+                 label="Databend" description="Databend SQL dialect."
+                 icon="icons/databend_icon.png">
+        </dialect>
+    </extension>
+
+</plugin>
